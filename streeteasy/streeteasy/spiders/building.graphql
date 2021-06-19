@@ -1,0 +1,21 @@
+query buildings($ids: [ID!]!) {
+    buildings(ids: $ids) {
+        id
+        url
+        active_listings_count
+        building_type
+        landmark_name
+        medium_image_uri
+        residential_unit_count
+        year_built
+        __typename
+        address {
+            pretty_address      
+            __typename
+        }
+        area { 
+            name      
+            __typename
+        }
+    }
+}
