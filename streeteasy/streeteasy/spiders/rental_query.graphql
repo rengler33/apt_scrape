@@ -1,0 +1,62 @@
+query rentals($ids: [ID!]!) {
+    rentals(ids: $ids) {
+        id
+        address {
+            unit
+            __typename
+        }
+        area {
+            name 
+            __typename
+        }
+        anyrooms_description
+        bedrooms
+        bedrooms_description
+        baths_description
+        baths_short_description
+        contacts {
+            business_name
+            full_business_address
+            name
+            phone
+            account_url
+            license {
+                id
+                display_type
+                __typename
+            }
+            __typename
+        }
+        building {
+            url
+            id
+            active_listings_count
+            address {
+                pretty_address      
+                __typename
+            }
+            area { 
+                name      
+                __typename
+            }
+            building_type
+            landmark_name
+            medium_image_uri
+            residential_unit_count
+            year_built
+            __typename
+        }
+        is_featured
+        listed_price
+        title_with_unit
+        medium_image_uri
+        open_houses {
+            id
+            __typename
+        }
+        unit_type
+        url
+        source
+        __typename
+    }
+}
