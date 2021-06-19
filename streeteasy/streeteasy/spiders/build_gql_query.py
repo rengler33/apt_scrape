@@ -30,7 +30,7 @@ def buildings_query():
     
     return ids, query
 
-    
+
 def main():
     headers = {
         'Origin': 'https://streeteasy.com',  # seems to be optional
