@@ -1,0 +1,12 @@
+{
+  __type(name: "Rental") {
+    name
+    fields {
+      name
+      type {
+        name
+        kind
+      }
+    }
+  }
+}
