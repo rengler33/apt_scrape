@@ -19,6 +19,7 @@ query rentals($ids: [ID!]!) {
         anyrooms_description
         bedrooms
         bedrooms_description
+        bathrooms
         baths_short_description
         baths_description
         is_featured

@@ -1,6 +1,5 @@
 query rentals($ids: [ID!]!) {
     rentals(ids: $ids) {
-        __typename
         id
         anyrooms
         bedrooms
@@ -8,50 +7,31 @@ query rentals($ids: [ID!]!) {
         anyrooms_description
         bedrooms_description
         baths_description
-        baths_short_description
-        is_featured
         listed_price
         title_with_unit
-        medium_image_uri
         large_image_uri
         unit_type
         url
-        source
         building {
-            __typename
             id
+            url
+            building_type
+            residential_unit_count
+            year_built
         }
         address {
-            __typename
             pretty_address
             unit
         }
         area {
-            __typename
             id
             name
         }
         contacts {
-            __typename
             id
             name
             phone
-            account_url
             business_name
-            full_business_address
-            industry_professional {
-                __typename
-                id
-            }
-            license {
-                __typename
-                id
-                display_type
-            }
-        }
-        open_houses {
-            __typename
-            id
         }
     }
 }

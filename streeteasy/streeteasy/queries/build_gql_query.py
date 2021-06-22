@@ -31,6 +31,17 @@ def buildings_query():
     return ids, query
 
 
+
+def listings_query():
+    with open("streeteasy/ids.jl") as f:
+        ids = json.loads(f.read())["ids"]
+    ids = ids[0]  # take only first one so as not to spam the server
+
+    with open(Path(__file__).parent.parent/ "spiders" / "listings.graphql") as f:
+        query = f.read()
+    
+    return ids, query
+
 def main():
     headers = {
         'Origin': 'https://streeteasy.com',  # seems to be optional
@@ -39,7 +50,8 @@ def main():
     }
 
     # ids, query = buildings_query()
-    ids, query = rentals_query()
+    # ids, query = rentals_query()
+    ids, query = listings_query()
 
     data_dict = {
         # "operationName":"rentals",  # seems to be optional
