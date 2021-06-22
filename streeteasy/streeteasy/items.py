@@ -1,5 +1,6 @@
 import scrapy
 from scrapy import Field
+from scrapy.loader import ItemLoader
 
 
 class ListingsItem(scrapy.Item):
@@ -28,3 +29,7 @@ class ListingsItem(scrapy.Item):
     contact_name = Field()
     contact_phone = Field()
     business_name = Field()
+
+
+class ListingsLoader(ItemLoader):
+    """ItemLoader for a ListingsItem object"""
