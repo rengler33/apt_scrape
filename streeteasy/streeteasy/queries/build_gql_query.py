@@ -44,7 +44,7 @@ def listings_query():
 
 def main():
     headers = {
-        'Origin': 'https://streeteasy.com',  # seems to be optional
+        # 'Origin': 'https://streeteasy.com',  # optional here, seems to break the spider
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0',
         'content-type': 'application/json',
     }

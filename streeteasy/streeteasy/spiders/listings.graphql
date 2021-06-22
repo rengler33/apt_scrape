@@ -6,7 +6,7 @@ query rentals($ids: [ID!]!) {
         bathrooms
         anyrooms_description
         bedrooms_description
-        baths_description
+        baths_short_description
         listed_price
         title_with_unit
         large_image_uri
