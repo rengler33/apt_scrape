@@ -1,6 +1,13 @@
 # Queries
 Queries of https://api-internal.streeteasy.com/graphql
 
+With GraphQL, each field name needs to be known in order to retrieve it. StreetEasy has disabled introspection of the API so it's not possible to see a full list of fields. One unfortunate example of this is the fact that I've only found list price available for retrieval - if the API makes available the "net-effective price" then I haven't been able to guess its name.
+
+
+
+It appears that `contact` is not queryable at the "QueryRoot" so it remains part of the rentals query.
+
+
 ## Rentals
 
 ```graphql

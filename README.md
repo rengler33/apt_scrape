@@ -12,10 +12,9 @@ NOTE: There is no reason to use this scraper: StreetEasy will send instant notif
 ### Notes
 The site is generally server-side rendered. Rather than crawl the pagination of the site, it is possible to retrieve the high-level details of a listing using their internal GraphQL API (if the rental IDs are known). The GraphQL API is used by the site mainly when navigating map views. 
 
-With GraphQL, each field name needs to be known in order to retrieve it. StreetEasy has disabled introspection of the API so it's not possible to see a full list of fields. One unfortunate example of this is the fact that I've only found list price available for retrieval - if the API makes available the "net-effective price" then I haven't been able to guess its name.
 
 ### GraphQL Queries
-There are two queries created: `rental` and `building`. It appears that `contact` is not queryable at the "QueryRoot" so it remains part of the rentals query.
+There are two queries created: `rental` and `building`. 
 
 ### Search criteria
 When collecting the rental IDs of interest, it's possible to specify the search criteria in the URL. (note: %7C is the pipe |)
