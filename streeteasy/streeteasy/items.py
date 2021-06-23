@@ -28,6 +28,7 @@ class ListingsItem(scrapy.Item):
     contact_id = Field()
     contact_name = Field()
     contact_phone = Field()
+    contact_email = Field()
     business_name = Field()
 
 

@@ -37,7 +37,8 @@ class ListingsSpider(scrapy.Spider):
         url = "https://api-internal.streeteasy.com/graphql"
         data_dict = {
             "operationName": "rentals",
-            "variables": {"ids": listing_ids},
+            "variables": {"ids": listing_ids[:2]},
+            # "variables": {"ids": listing_ids},
             "query": query,
         }
 
@@ -52,5 +53,45 @@ class ListingsSpider(scrapy.Spider):
 
     def get_listing_details(self, response):
         data = json.loads(response.text)
+        if data.get("data") is None:
+            from scrapy.shell import inspect_response
+            inspect_response(response, self)
+
         for item in data["data"]["rentals"]:
-            yield item
+            l = ListingsLoader(ListingsItem())
+            l.add_value('rental_id', item["id"])
+            l.add_value('anyrooms', item["anyrooms"])
+            l.add_value('anyrooms_description', item["anyrooms_description"])
+            l.add_value('bedrooms', item["bedrooms"])
+            l.add_value('bedrooms_description', item["bedrooms_description"])
+            l.add_value('bathrooms', item["bathrooms"])
+            l.add_value('baths_short_description', item["baths_short_description"])
+            l.add_value('listed_price', item["listed_price"])
+            l.add_value('title_with_unit', item["title_with_unit"])
+            l.add_value('large_image_uri', item["large_image_uri"])
+            l.add_value('unit_type', item["unit_type"])
+            l.add_value('url', item["url"])
+
+            building = item["building"]
+            l.add_value('building_id', building["id"])
+            l.add_value('building_url', building["url"])
+            l.add_value('building_type', building["building_type"])
+            l.add_value('building_residential_unit_count', building["residential_unit_count"])
+            l.add_value('building_year_built', building["year_built"])
+
+            address = item["address"]
+            l.add_value('pretty_address', address["pretty_address"])
+            l.add_value('unit', address["unit"])
+
+            area = item["area"]
+            l.add_value('area_id', area["id"])
+            l.add_value('area_name', area["name"])
+
+            contact = item["contacts"][0]  # actually a list
+            l.add_value('contact_id', contact["id"])
+            l.add_value('contact_name', contact["name"])
+            l.add_value('contact_phone', contact["phone"])
+            l.add_value('contact_email', contact["email"])
+            l.add_value('business_name', contact["business_name"])
+            # business ID or URL ?
+            yield l.load_item()
