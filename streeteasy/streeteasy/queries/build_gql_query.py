@@ -50,8 +50,8 @@ def main():
     }
 
     # ids, query = buildings_query()
-    # ids, query = rentals_query()
-    ids, query = listings_query()
+    ids, query = rentals_query()
+    # ids, query = listings_query()
 
     data_dict = {
         # "operationName":"rentals",  # seems to be optional

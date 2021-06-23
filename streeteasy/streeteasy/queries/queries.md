@@ -49,6 +49,7 @@ query rentals($ids: [ID!]!) {
             id
             name
             phone
+            email
             account_url
             business_name
             full_business_address
